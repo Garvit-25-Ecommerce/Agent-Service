@@ -2,6 +2,7 @@ package com.example.agentService.Tools;
 
 import com.example.agentService.Dto.ProductDto;
 import com.example.agentService.client.ProductServiceClient;
+import com.example.agentService.service.SearchService;
 import dev.langchain4j.agent.tool.Tool;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

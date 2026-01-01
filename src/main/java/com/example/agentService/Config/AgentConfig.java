@@ -1,8 +1,10 @@
 package com.example.agentService.Config;
 
+import com.example.agentService.Agent.SearchAgent;
 import com.example.agentService.Agent.SmartCartAgent;
 import com.example.agentService.Tools.CartTool;
 import com.example.agentService.Tools.ProductTool;
+import com.example.agentService.Tools.SearchTool;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.service.AiServices;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +18,14 @@ public class AgentConfig {
         return AiServices.builder(SmartCartAgent.class)
                 .tools(productTool, cartTool)
                 .chatLanguageModel(model)
+                .build();
+    }
+
+    @Bean
+    SearchAgent searchAgent(ChatLanguageModel chatLanguageModel, SearchTool searchTool) {
+        return AiServices.builder(SearchAgent.class)
+                .tools(searchTool)
+                .chatLanguageModel(chatLanguageModel)
                 .build();
     }
 }
